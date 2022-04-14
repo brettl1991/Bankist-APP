@@ -60,6 +60,7 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 //instead of working with global variables start passing the data into a function
+//first we need to uncomment in css the main app opacity to see the container
 const displayMovements = function (movements) {
   //Empty the container
   containerMovements.innerHTML = '';
