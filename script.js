@@ -82,7 +82,7 @@ displayMovements(account1.movements);
 
 const createUserNames = function (accounts) {
   accounts.forEach(function (acc) {
-    //we just cerated a side effect without returning anything, looped over accounts array and each iteration we manipulated the current account objand added a username to it based on the account owner plus all of the transformation:
+    //we just cerated a side effect without returning anything, looped over accounts array and each iteration we manipulated the current account obj and added a username to it based on the account owner plus all of the transformation:
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
