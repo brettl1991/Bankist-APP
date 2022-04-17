@@ -77,3 +77,21 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML); //with this we can see the whole html elements that we passed in above in the console: all the 8 movements from account1
+
+//Compute usernames for each account
+
+const createUserNames = function (accounts) {
+  accounts.forEach(function (acc) {
+    //we just cerated a side effect without returning anything, looped over accounts array and each iteration we manipulated the current account objand added a username to it based on the account owner plus all of the transformation:
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+//'Steven Thomas Williams'; // stw going to be the new username that we will create:
+// console.log(createUserNames('Steven Thomas Williams')); //stw
+createUserNames(accounts);
+console.log(accounts); //from console we can see results
