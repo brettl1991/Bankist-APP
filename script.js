@@ -85,13 +85,13 @@ const createUserNames = function (accounts) {
     //we just cerated a side effect without returning anything, looped over accounts array and each iteration we manipulated the current account obj and added a username to it based on the account owner plus all of the transformation:
     acc.username = acc.owner
       .toLowerCase()
-      .split(' ')
+      .split(' ') //['steven', 'thomas', 'williams']
       .map(name => name[0])
-      .join('');
+      .join(''); //stw
   });
 };
 
-//'Steven Thomas Williams'; // stw going to be the new username that we will create:
+//'Steven Thomas Williams'; // stw going to be the new username that we will create above:
 // console.log(createUserNames('Steven Thomas Williams')); //stw
 createUserNames(accounts);
 console.log(accounts); //from console we can see results
