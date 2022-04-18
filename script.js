@@ -95,3 +95,12 @@ const createUserNames = function (accounts) {
 // console.log(createUserNames('Steven Thomas Williams')); //stw
 createUserNames(accounts);
 console.log(accounts); //from console we can see results
+
+//Calculate the balance of the movements and print that to the application userface
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => (acc += mov), 0);
+  //adding to the balance value html element:
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
