@@ -144,7 +144,7 @@ const updateUI = function (account) {
 //Event Handler
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
-  //Prevent from from submitting
+  //Prevent form from submitting
   e.preventDefault();
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
