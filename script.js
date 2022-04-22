@@ -251,3 +251,18 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted; //that is how we chacge from true to false to false to true and backwards
 });
+
+//if we need to get elements from the ui as an array, we assume here we dont have movements array
+//we want to select the current movements so we need to add an eventlistener which we can add to any object, does not have to be just a button
+//like when we click on balance label
+labelBalance.addEventListener('click', function () {
+  const moveUI = Array.from(
+    document.querySelectorAll('.movements__value'), //movements__value this the place in html where the value stored, so we are selecting all of the elements that has this class, this is an array like structure, so not an array but we can easily convert it with Array.from()
+    el => Number(el.textContent.replace('€', '')) //if we want to get back just the number values without EUR sign, we just pass a mapping function as a 2nd argument in the Array.from() function; mapping function that transforms the initial array to an array exactly that we wanted
+  );
+  // console.log(moveUI); //so we are getting back the current 8 movemments
+  //if we want to get back just the number values without EUR sign, we just pass a mapping function as a 2nd argument in the Array.from() function
+  console.log(moveUI); //['1300', '70', '-130', '-650', '3000', '-400', '450', '200']
+  //another way of converting to an array
+  const moveUI2 = [...document.querySelectorAll('.movements__value')]; //but we need to do the mapping in this situation separately
+});
