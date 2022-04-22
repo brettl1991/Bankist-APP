@@ -61,11 +61,16 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //instead of working with global variables start passing the data into a function
 //first we need to uncomment in css the main app opacity to see the container
-const displayMovements = function (movements) {
+
+//we will sorting the movements as well in this function, and adding a sort parameter to the func and by default set it to false
+const displayMovements = function (movements, sort = false) {
   //Empty the container
   containerMovements.innerHTML = '';
+  //create new var where we define conditionally to be able to sort
+  //so if sort is true we want to sort the movements, but not the original underlaying data just a current one, so we are creating a copy with a slice method
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
   //Adding the new elements to the page
-  movements.forEach(function (mov, i) {
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -234,4 +239,15 @@ btnClose.addEventListener('click', function (e) {
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+//sort eventhandler
+// but when we click again not going back to normal, nothing happening, to solve this: using a state variable that monitor if we are sorting the array or not
+
+let sorted = false;
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
