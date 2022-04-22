@@ -249,5 +249,5 @@ let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
-  sorted = !sorted;
+  sorted = !sorted; //that is how we chacge from true to false to false to true and backwards
 });
