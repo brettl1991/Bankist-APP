@@ -266,3 +266,10 @@ labelBalance.addEventListener('click', function () {
   //another way of converting to an array
   const moveUI2 = [...document.querySelectorAll('.movements__value')]; //but we need to do the mapping in this situation separately
 });
+
+// C
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0)
+  .console.log(bankDepositSum); //25180
