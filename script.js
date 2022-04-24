@@ -267,9 +267,26 @@ labelBalance.addEventListener('click', function () {
   const moveUI2 = [...document.querySelectorAll('.movements__value')]; //but we need to do the mapping in this situation separately
 });
 
-// C
+// Calculate how much has been deposited to the bank
 const bankDepositSum = accounts
   .flatMap(acc => acc.movements)
   .filter(mov => mov > 0)
   .reduce((sum, cur) => sum + cur, 0)
   .console.log(bankDepositSum); //25180
+
+//Count how many deposit in the bank with at least $1000
+// const numDeposit1000 = accounts.flatMap(acc => acc.movements).fileter(mov => mov >= 1000).length;;
+// console.log(numDeposit1000)//6
+
+//an other way using reduce
+const numDeposit1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(numDeposit1000);
+
+//Prefixed ++ operator
+let a = 10;
+console.log(a++); //10  why is that? Because the ++ operator does increment the value but still returns the previous value
+console.log(a); //11
+//but if we write the ++ before than it is working
+console.log(++a);
