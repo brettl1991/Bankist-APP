@@ -275,7 +275,7 @@ const bankDepositSum = accounts
 console.log(bankDepositSum); //25180
 
 //Count how many deposit in the bank with at least $1000
-// const numDeposit1000 = accounts.flatMap(acc => acc.movements).fileter(mov => mov >= 1000).length;;
+// const numDeposit1000 = accounts.flatMap(acc => acc.movements).filter(mov => mov >= 1000).length;;
 // console.log(numDeposit1000)//6
 
 //an other way using reduce
