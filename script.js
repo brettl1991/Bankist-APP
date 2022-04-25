@@ -271,8 +271,8 @@ labelBalance.addEventListener('click', function () {
 const bankDepositSum = accounts
   .flatMap(acc => acc.movements)
   .filter(mov => mov > 0)
-  .reduce((sum, cur) => sum + cur, 0)
-  .console.log(bankDepositSum); //25180
+  .reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositSum); //25180
 
 //Count how many deposit in the bank with at least $1000
 // const numDeposit1000 = accounts.flatMap(acc => acc.movements).fileter(mov => mov >= 1000).length;;
