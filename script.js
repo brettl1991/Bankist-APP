@@ -290,3 +290,16 @@ console.log(a++); //10  why is that? Because the ++ operator does increment the 
 console.log(a); //11
 //but if we write the ++ before than it is working
 console.log(++a);
+
+//Create a new object which contains sum of the deposits and withdrawals
+const { deposits, withdrawals } = accounts //destructuring straight
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur); another way:
+      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdrawals: 0 } //this one is our accumulator
+  );
+console.log(deposits, withdrawals); //25180 -7340
