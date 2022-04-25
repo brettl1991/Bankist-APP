@@ -249,7 +249,7 @@ let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
-  sorted = !sorted; //that is how we chacge from true to false to false to true and backwards
+  sorted = !sorted; //that is how we change from true to false to false to true and backwards
 });
 
 //if we need to get elements from the ui as an array, we assume here we dont have movements array
