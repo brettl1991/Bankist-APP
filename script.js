@@ -303,3 +303,24 @@ const { deposits, withdrawals } = accounts //destructuring straight
     { deposits: 0, withdrawals: 0 } //this one is our accumulator
   );
 console.log(deposits, withdrawals); //25180 -7340
+
+//Create a simple function to convert any string to a titlecase(all the word in the sentence are capitalised except for some of them)
+const convertTitleCase = function (title) {
+  const capitalise = str => str[0].toUpperCase() + str.slice(1); //with this option the and not going to be lowercase as the first word of the sentence
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with']; //word that should be not capitalised
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(' ');
+  return capitalise(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is an other title with an EXAMPLE'));
+
+// This Is a Nice Title
+// This Is a Long Title but Not Too Long
+// And Here Is an Other Title with an Example
