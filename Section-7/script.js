@@ -287,3 +287,41 @@ console.log(Number.isFinite(20 / 0)); //false
 console.log(Number.isInteger(23)); //true
 console.log(Number.isInteger(23.0)); //true
 console.log(Number.isInteger(23 / 0)); //false
+
+//Math and rounding
+console.log(Math.sqrt(25)); //5,  returns the square root of a number
+console.log(25 ** (1 / 2)); //5
+
+console.log(Math.max(5, 18, '23', 11, 2)); //23, max value get return to us, does type coersion
+console.log(Math.max(5, 18, '23X', 11, 2)); //NaN
+console.log(Math.min(5, 18, 23, 11, 2)); //2
+
+//calc radius of a circle
+console.log(Math.PI); //3.141592653589793
+//circle radius 10px
+console.log(Math.PI * Number.parseFloat('10px') ** 2); //314.1592653589793
+
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+//gives us a number between 0 and 1 => than we multiply with max -min than we get a number between 0 and max - min => min to max-min + min
+const randomInt = (min, max) =>
+  Math.trunc(Math.random() * (max - min) + 1) + min;
+//so random number between 10 and 20
+console.log(randomInt(10, 20));
+
+//Rounding integers, does type coerson
+console.log(Math.trunc(23.3)); //23
+console.log(Math.round(23.9)); //24, as round always to the nearest integer
+console.log(Math.ceil(23.3)); //24 , round up always
+console.log(Math.ceil(23.9)); //24
+console.log(Math.floor(23.3)); //23, round down always, cut off the decimal part for positive numbers just
+console.log(Math.floor(23.9)); //23
+console.log(Math.trunc(-23.3)); //-23
+console.log(Math.floor(-23.3)); //-24
+
+//Rounding decimals
+console.log((2.7).toFixed(0)); //3, and toFixed always returns back a string
+console.log((2.7).toFixed(3)); //2.700
+console.log((2.345).toFixed(2)); //2.35
+//if we want to convert them to a number add + sign in front of them
+console.log(+(2.7).toFixed(3)); //2.700
