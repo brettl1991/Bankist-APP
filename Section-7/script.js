@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value); //we want to round any value down and floor does type coerson
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -325,3 +325,6 @@ console.log((2.7).toFixed(3)); //2.700
 console.log((2.345).toFixed(2)); //2.35
 //if we want to convert them to a number add + sign in front of them
 console.log(+(2.7).toFixed(3)); //2.700
+
+//ROUND THE REQUESTED LOAN AMOUNT, which happening inside loan eventhandler above
+//
