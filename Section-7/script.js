@@ -326,5 +326,5 @@ console.log((2.345).toFixed(2)); //2.35
 //if we want to convert them to a number add + sign in front of them
 console.log(+(2.7).toFixed(3)); //2.700
 
-//ROUND THE REQUESTED LOAN AMOUNT, which happening inside loan eventhandler above
+//ROUND THE REQUESTED LOAN AMOUNT, which inside loan eventhandler above
 //USE TOFIXED TO MAKE OUR NUMBERS NICER, SHOULD LOOK LIKE ALL THE SAME WITH DECIMALS, above by displaymovements, displaybalance and displaysummary when we need to use
