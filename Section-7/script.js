@@ -266,7 +266,7 @@ console.log(+'23'); //23
 console.log(Number.parseInt('30px', 10)); //30, needs to start with a number, as js try to figure out the number from a string
 console.log(Number.parseInt('e23')); //Nan
 
-// parseInt accepts a second parameter, called radix, which is the base of the numeral sysytem, that we are using by first above we are using number 10, so 0 to 9, but if we are working with binary we write 2 as a 2nd parameter and the result will be different
+// parseInt accepts a second parameter, called radix, which is the base of the numeral system, that we are using by first above we are using number 10, so 0 to 9, but if we are working with binary we write 2 as a 2nd parameter and the result will be different
 
 //when need to read a number out of the string
 console.log(Number.parseFloat('2.5rem')); //2.5
