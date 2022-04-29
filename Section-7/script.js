@@ -251,7 +251,7 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-////numbers always stored in binary format
+////numbers always stored in binary format, represented internally as 64 bits
 console.log(23 === 23.0);
 
 //Base 10         0 to 9
