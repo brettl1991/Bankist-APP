@@ -352,3 +352,38 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+
+//THE BIGINT: SPECIAL TYPE OF INTIGERS
+//the biggest number js can deal:
+console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+
+//sometimes we need to deal with large numbers
+//this n transform a regular number into a bigint number
+console.log(6328248273927365136789087654567890n); //6328248273927365136789087654567890n
+//or we can use the bigint function
+console.log(BigInt(63282482739)); //63282482739n
+
+console.log(10000n + 10000n); //20000n
+console.log(234567898765432345678987654n * 3456789n); //810851732205460112787322053483006n
+// console.log(Math.sqrt(16n));//will throw an error
+
+//not posiible to mix bigint with regular numbers
+const huge = 234567890987654456789n;
+const num = 23;
+// console.log(huge * num); //we get error, so we need to convert 23 to bigint
+console.log(huge * BigInt(num)); //5395061492716052506147n
+
+//there are 2 exceptions: the comparison and + operator when working with strings
+console.log(20n > 15); //true
+console.log(20n === 20); //this operator does not do type coerson so gonna be false
+console.log(typeof 20n); //bigint
+//but if we use the regular equality (loose) opeartor than js will do type coerson
+console.log(20n == '20'); //true
+
+//other exception: string concatinations
+console.log(huge + 'is really Big'); //234567890987654456789is really Big - this case the number (bigint) been converted into strings
+
+//Devisions
+console.log(10n / 3n); //will return the closest bigint 3n
+console.log(11n / 3n); //3n
+console.log(12n / 3n); //4n
