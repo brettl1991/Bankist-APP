@@ -328,3 +328,27 @@ console.log(+(2.7).toFixed(3)); //2.700
 
 //ROUND THE REQUESTED LOAN AMOUNT, which inside loan eventhandler above
 //USE TOFIXED TO MAKE OUR NUMBERS NICER, SHOULD LOOK LIKE ALL THE SAME WITH DECIMALS, above by displaymovements, displaybalance and displaysummary when we need to use
+
+//REMINDER OPERATOR
+//simple returns a reminder of a devision, the operator is the % sign
+console.log(5 % 2); //1 because 5/2 = 2 and remain 1
+console.log(8 % 3); //2
+console.log(6 % 2); //0
+
+//check if any number devisible by any number and if it is 0 than the first number devisible
+const isEven = n => n % 2 === 0;
+console.log(isEven(8)); //true
+console.log(isEven(23)); //false
+console.log(isEven(514)); //true
+
+//select all of the rows in our mvements and convert it to a real array with spread and we want to colour every 2nd row of the movements
+labelBalance.addEventListener('click', function () {
+  // console.log('Hello', document.querySelectorAll('.movements__row'));
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    //0, 2, 4, 6 and so on
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+
+    //paint every 3rd row to an other color so 0, 3, 6 and so on
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
