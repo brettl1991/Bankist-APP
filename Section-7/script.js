@@ -387,3 +387,51 @@ console.log(huge + 'is really Big'); //234567890987654456789is really Big - this
 console.log(10n / 3n); //will return the closest bigint 3n
 console.log(11n / 3n); //3n
 console.log(12n / 3n); //4n
+
+//CREATING DATES
+
+//4 ways to creating them, they will all use new Date () constraction function
+//1; use the new Date () constraction function
+const now = new Date();
+console.log(now); //Fri Apr 29 2022 15:39:40 GMT+0100 (British Summer Time)
+
+//2;The new Date(datestring) constructor creates a date object from a date string. not good isea as can be unreliable but if the string has been created by js than it is safe to use
+console.log(new Date('Apr 29 2022 15:39:40'));
+
+//example for safety in account1 object we have movement dates: parse (felbont) from movementsdate strings
+console.log(new Date(account1.movementsDates[0])); //Mon Nov 18 2019 21:31:17 GMT+0000 (Greenwich Mean Time)
+
+//we can also pass in year, month, hour, minute, second into this construction
+console.log(new Date(2037, 10, 19, 15, 23, 5)); //Thu Nov 19 2337 15:23:05 GMT+0000 (Greenwich Mean Time)
+//also autocorrect to the next date the dates if we put for nov 31 but we know november has just 30 days
+console.log(new Date(2037, 10, 31)); //Tue Dec 01 2037 00:00:00 GMT+0000 (Greenwich Mean Time)
+
+//we can pass the amount of milliseconds past since the beginning of the unit time, can be useful
+console.log(new Date(0)); //Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)
+
+//3 days after this above, this is how we convert from days to milliseconds
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); //Sun Jan 04 1970 01:00:00 GMT+0100 (Greenwich Mean Time)
+
+//working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future); //Thu Nov 19 2037 15:23:00 GMT+0000 (Greenwich Mean Time)
+console.log(future.getFullYear()); //2037
+console.log(future.getMonth()); //10
+console.log(future.getDate()); //19 day of the month
+console.log(future.getDay()); //4 day of the week
+console.log(future.getHours()); //15
+console.log(future.getMinutes()); //23
+console.log(future.getSeconds()); //0
+//ISO string, follows some international standard
+console.log(future.toISOString()); //2037-11-19T15:23:00.000Z
+//timestamp for the date: the milliseconds since has past the january 1st since 1970
+console.log(future.getTime()); //2142256980000 and we can use this to cerate the date
+
+console.log(new Date(2142256980000)); //Thu Nov 19 2037 15:23:00 GMT+0000 (Greenwich Mean Time)
+
+//current time stamp
+console.log(Date.now()); //1651245139752
+
+//also the set version for all of these methods
+future.setFullYear(2040);
+console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0000 (Greenwich Mean Time)
