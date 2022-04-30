@@ -341,7 +341,7 @@ console.log(isEven(8)); //true
 console.log(isEven(23)); //false
 console.log(isEven(514)); //true
 
-//select all of the rows in our mvements and convert it to a real array with spread and we want to colour every 2nd row of the movements
+//select all of the rows in our movements and convert it to a real array with spread and we want to colour every 2nd row of the movements
 labelBalance.addEventListener('click', function () {
   // console.log('Hello', document.querySelectorAll('.movements__row'));
   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
