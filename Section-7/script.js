@@ -160,6 +160,15 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+//display day/month/year
+const now1 = new Date();
+const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
+const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
+const year = now1.getFullYear();
+const hours = now1.getHours();
+const min = now1.getMinutes();
+labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -442,3 +451,4 @@ future.setFullYear(2040);
 console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0000 (Greenwich Mean Time)
 
 //FAKE ALWAYS LOGGED IN BY EVENTHANDLERS ABOVE
+//creating the date under current balance
