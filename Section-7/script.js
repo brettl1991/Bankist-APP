@@ -395,7 +395,7 @@ console.log(12n / 3n); //4n
 const now = new Date();
 console.log(now); //Fri Apr 29 2022 15:39:40 GMT+0100 (British Summer Time)
 
-//2;The new Date(datestring) constructor creates a date object from a date string. not good isea as can be unreliable but if the string has been created by js than it is safe to use
+//2;The new Date(datestring) constructor creates a date object from a date string. not good idea as can be unreliable but if the string has been created by js than it is safe to use
 console.log(new Date('Apr 29 2022 15:39:40'));
 
 //example for safety in account1 object we have movement dates: parse (felbont) from movementsdate strings
