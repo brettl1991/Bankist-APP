@@ -190,8 +190,8 @@ btnLogin.addEventListener('click', function (e) {
     const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
     const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
     const year = now1.getFullYear();
-    const hours = now1.getHours();
-    const min = now1.getMinutes();
+    const hours = `${now1.getHours()}`.padStart(2, 0);
+    const min = `${now1.getMinutes()}`.padStart(2, 0);
     labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
 
     // Clear input fields
