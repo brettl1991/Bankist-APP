@@ -221,6 +221,10 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    //add transfer date
+    currentAccount.movementsDates.push(new Date().toDateString());
+    receiverAcc.movementsDates.push(new Date().toDateString());
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -235,6 +239,8 @@ btnLoan.addEventListener('click', function (e) {
     // Add movement
     currentAccount.movements.push(amount);
 
+    //add loan date
+    currentAccount.movementsDates.push(new Date().toISOString());
     // Update UI
     updateUI(currentAccount);
   }
@@ -462,3 +468,4 @@ console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0000 (Greenwich Mean Time)
 //FAKE ALWAYS LOGGED IN BY EVENTHANDLERS ABOVE
 //creating the date under current balance
 //diplay the date next to the movements by displaymovements
+//add transfer date and loan date: whenever we transfer or request a loan we need to push the new value not only to the movemnets array, in the movements date too
