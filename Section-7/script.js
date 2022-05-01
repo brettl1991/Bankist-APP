@@ -81,19 +81,28 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
+    const date = new Date(acc.movementsDates[i]); //we need to convert here the string back into a js object to eb able to call the above year, day, month data
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate = `${day}/${month}/${year}`;
+    //add one more html which contains the date
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+        <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -142,7 +151,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -160,15 +169,6 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
-//display day/month/year
-const now1 = new Date();
-const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
-const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
-const year = now1.getFullYear();
-const hours = now1.getHours();
-const min = now1.getMinutes();
-labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
-
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -184,6 +184,15 @@ btnLogin.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
+
+    //display day/month/year, create current date and time
+    const now1 = new Date();
+    const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
+    const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
+    const year = now1.getFullYear();
+    const hours = now1.getHours();
+    const min = now1.getMinutes();
+    labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -258,7 +267,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
 
@@ -452,3 +461,4 @@ console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0000 (Greenwich Mean Time)
 
 //FAKE ALWAYS LOGGED IN BY EVENTHANDLERS ABOVE
 //creating the date under current balance
+//diplay the date next to the movements by displaymovements
