@@ -568,3 +568,25 @@ console.log(
 ); //hu-HU 3 884 764,23 EUR
 
 //implement currencies in our application
+
+//TIMERS: SETTIMEOUT AND SETINTERVAL
+//settimout runs just once after a defined time, while the other keeps running until we stop
+
+//settimeout usage to simulate ordering a pizza
+setTimeout(() => {
+  console.log('Here is you pizza 🍕');
+}, 3000); //after 3 sec we call the function, important to know the code execution not stopping here so move on to the next line
+console.log('Waiting...'); //will pop up straight and just after in 3 s the above
+
+//we can cancel the timeout before the 3 sec passed
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => {
+    console.log(`Here is you pizza 🍕 with ${ing1} and ${ing2}`);
+  },
+  3000,
+  ingredients
+);
+console.log('Waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
