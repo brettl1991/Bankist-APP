@@ -187,7 +187,6 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
-/
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -216,7 +215,7 @@ btnLogin.addEventListener('click', function (e) {
 
     //Experimenting API
     const now1 = new Date();
-    
+
     //use internationalization api to format the date
     //define the option object to add time as well to the date
     const options = {
@@ -227,10 +226,18 @@ btnLogin.addEventListener('click', function (e) {
       year: 'numeric',
       weekday: 'long',
     };
-    const locale = navigator.language;
-    console.log(locale); //and we can pass this in to Intl.DateTimeFormat instead of 'en-US' so will display the current cuntry browser date
-    labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(now1); //The Intl.DateTimeFormat object enables language-sensitive date and time formatting. we need to pass in local data (language and country) and for format we pass in the date we want to format
-    
+    // const locale = navigator.language;//
+    // console.log(locale); //and we can pass this in to Intl.DateTimeFormat instead of 'en-US' so will display the current cuntry browser date
+
+    // labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(
+    //   now1
+    // ); //The Intl.DateTimeFormat object enables language-sensitive date and time formatting. we need to pass in local data (language and country) and for format we pass in the date we want to format
+
+    //format Jessica and Jonas date as per their local contry
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now1);
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
