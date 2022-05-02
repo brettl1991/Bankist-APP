@@ -595,3 +595,9 @@ console.log('Waiting...');
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
 //implement a timer to simulate an approval of our loan
+
+//setinterval
+setInterval(function () {
+  const now3 = new Date();
+  console.log(now3);
+}, 1000); //after each second we get the current time in the console
