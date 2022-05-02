@@ -296,13 +296,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value); //we want to round any value down and floor does type coerson
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    //  implement a timer to simulate an approval of our loan
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    //add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
-    // Update UI
-    updateUI(currentAccount);
+      //add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500); //after 2.5 seconds
   }
   inputLoanAmount.value = '';
 });
@@ -590,3 +593,5 @@ const pizzaTimer = setTimeout(
 console.log('Waiting...');
 
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+//implement a timer to simulate an approval of our loan
