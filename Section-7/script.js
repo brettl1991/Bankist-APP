@@ -85,7 +85,10 @@ const formatMovementDate = function (date) {
   const calcDaysPassed = (date1, date2) =>
     Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
 
-  //
+  //calculating how many days passed since the current date and between the date we are working with
+  const daysPassed = calcDaysPassed(new Date(), date);
+  console.log(daysPassed);
+
   const day = `${date.getDate()}`.padStart(2, 0);
   const month = `${date.getMonth() + 1}`.padStart(2, 0);
   const year = date.getFullYear();
@@ -102,7 +105,7 @@ const displayMovements = function (acc, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-    const date = new Date(acc.movementsDates[i]); //we need to convert here the string back into a js object to eb able to call the above year, day, month data
+    const date = new Date(acc.movementsDates[i]); //we need to convert here the string back into a js object to be able to call the above year, day, month data
     const displayDate = formatMovementDate(date);
     //add one more html which contains the date
     const html = `
