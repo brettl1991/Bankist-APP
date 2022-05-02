@@ -187,6 +187,7 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+/
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -204,14 +205,32 @@ btnLogin.addEventListener('click', function (e) {
     containerApp.style.opacity = 100;
 
     //display day/month/year, create current date and time
-    const now1 = new Date();
-    const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
-    const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
-    const year = now1.getFullYear();
-    const hours = `${now1.getHours()}`.padStart(2, 0);
-    const min = `${now1.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
+    // const now1 = new Date();
+    // const day = `${now1.getDate()}`.padStart(2, 0); //2 character long and use with 0
+    // const month = `${now1.getMonth() + 1}`.padStart(2, 0); //because getMonth 0 based we need to add + 1
+    // const year = now1.getFullYear();
+    // const hours = `${now1.getHours()}`.padStart(2, 0);
+    // const min = `${now1.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
+    //we can replace them above with the internationalization api below, so it will do this kind of formatting for us automatically
 
+    //Experimenting API
+    const now1 = new Date();
+    
+    //use internationalization api to format the date
+    //define the option object to add time as well to the date
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      weekday: 'long',
+    };
+    const locale = navigator.language;
+    console.log(locale); //and we can pass this in to Intl.DateTimeFormat instead of 'en-US' so will display the current cuntry browser date
+    labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(now1); //The Intl.DateTimeFormat object enables language-sensitive date and time formatting. we need to pass in local data (language and country) and for format we pass in the date we want to format
+    
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
@@ -439,8 +458,8 @@ console.log(12n / 3n); //4n
 
 //4 ways to creating them, they will all use new Date () constraction function
 //1; use the new Date () constraction function
-const now = new Date();
-console.log(now); //Fri Apr 29 2022 15:39:40 GMT+0100 (British Summer Time)
+const now2 = new Date();
+console.log(now2); //Fri Apr 29 2022 15:39:40 GMT+0100 (British Summer Time)
 
 //2;The new Date(datestring) constructor creates a date object from a date string. not good idea as can be unreliable but if the string has been created by js than it is safe to use
 console.log(new Date('Apr 29 2022 15:39:40'));
@@ -500,3 +519,5 @@ const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
 console.log(days1); //10
 
 //with the above function display our dates in a nices way
+
+// INTERNATIONALIZING DATES(INTL): formatting dates according different languages
