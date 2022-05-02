@@ -222,7 +222,7 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAcc.movements.push(amount);
 
     //add transfer date
-    currentAccount.movementsDates.push(new Date().toDateString());
+    currentAccount.movementsDates.push(new Date().toDateString()); //toDateString returnsthe date portion of a Date
     receiverAcc.movementsDates.push(new Date().toDateString());
 
     // Update UI
