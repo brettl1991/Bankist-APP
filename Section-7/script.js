@@ -215,7 +215,7 @@ btnLogin.addEventListener('click', function (e) {
     // labelDate.textContent = `${day}/${month}/${year}, ${hours}:${min}`; //and we want to put 0 for the month and day if its just 1 number and to do that we need to use padstart
     //we can replace them above with the internationalization api below, so it will do this kind of formatting for us automatically
 
-    //Experimenting API
+    //API
     const now1 = new Date();
 
     //use internationalization api to format the date
@@ -530,3 +530,25 @@ console.log(days1); //10
 //with the above function display our dates in a nices way
 
 // INTERNATIONALIZING DATES(INTL): formatting dates according different languages
+// INTERNATIONALIZING NUMBERS(INTL):
+const num1 = 3884764.23;
+const options1 = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+}; //we can also add more properties to this object, check mdn for this
+console.log('US: ', new Intl.NumberFormat('en-US').format(num1)); //US:  3,884,764.23
+console.log('Germany: ', new Intl.NumberFormat('de-DE').format(num1)); //Germany:  3.884.764,23
+console.log('Syria: ', new Intl.NumberFormat('ar-SY').format(num1)); //Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣
+
+//use the locale from the browser
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language).format(num1)
+); //hu-HU 3 884 764,23
+
+//passing in options
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language, options1).format(num1)
+); //hu-HU 3 884 764,23 EUR
