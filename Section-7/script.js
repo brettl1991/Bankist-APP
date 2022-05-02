@@ -81,6 +81,17 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+const formatMovementDate = function (date) {
+  const calcDaysPassed = (date1, date2) =>
+    Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+  //
+  const day = `${date.getDate()}`.padStart(2, 0);
+  const month = `${date.getMonth() + 1}`.padStart(2, 0);
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -92,10 +103,7 @@ const displayMovements = function (acc, sort = false) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const date = new Date(acc.movementsDates[i]); //we need to convert here the string back into a js object to eb able to call the above year, day, month data
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    const displayDate = `${day}/${month}/${year}`;
+    const displayDate = formatMovementDate(date);
     //add one more html which contains the date
     const html = `
       <div class="movements__row">
@@ -469,3 +477,16 @@ console.log(future); //Mon Nov 19 2040 15:23:00 GMT+0000 (Greenwich Mean Time)
 //creating the date under current balance
 //diplay the date next to the movements by displaymovements
 //add transfer date and loan date: whenever we transfer or request a loan we need to push the new value not only to the movemnets array, in the movements date too
+
+//OPERATIONS WITH DATES
+//we can convert a date into timestamp miliseconds
+const future1 = new Date(2037, 1019, 15, 23);
+console.log(+future1); //4795282800000
+
+//create a function that intake 2 dates and going to return the number of days that passed between these 2 dates
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24); //that is how we convert to days
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+console.log(days1); //10
+
+//with the above function display our dates in a nices way
