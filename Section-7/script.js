@@ -196,10 +196,8 @@ const updateUI = function (acc) {
 
 //logout timer
 const startLogoutTimer = function () {
-  //setting the time to 5min
-  let time = 120;
-  //call the timer every second
-  const timer = setInterval(function () {
+  const tick = function () {
+    //export this below here to a separate function, than call it immediately and start calling in every second using set interval to fix the timer not to start just from 1 sec when you log in, instead immediately
     //convert number of sec to min and sec
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
@@ -215,7 +213,12 @@ const startLogoutTimer = function () {
       labelWelcome.textContent = `Log in to get started`;
       containerApp.style.opacity = 0;
     }
-  }, 1000);
+  };
+  //setting the time to 5min
+  let time = 10;
+  //call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
 };
 ///////////////////////////////////////
 // Event handlers
