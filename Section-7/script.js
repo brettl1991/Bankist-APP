@@ -216,14 +216,15 @@ const startLogoutTimer = function () {
     time--;
   };
   //setting the time to 5min
-  let time = 10;
+  let time = 120;
   //call the timer every second
   tick();
   const timer = setInterval(tick, 1000);
+  return timer; //to be able to clear the timer we need to return it
 };
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 //FAKE ALWAYS LOGGED IN
 // currentAccount = account1;
@@ -284,8 +285,10 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+    //timer
+    if (timer) clearInterval(timer);
 
-    startLogoutTimer();
+    timer = startLogoutTimer();
     // Update UI
     updateUI(currentAccount);
   }
