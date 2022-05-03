@@ -194,14 +194,37 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+//logout timer
+const startLogoutTimer = function () {
+  //setting the time to 5min
+  let time = 120;
+  //call the timer every second
+  const timer = setInterval(function () {
+    //convert number of sec to min and sec
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    //in each call print the remaining time to UI
+
+    labelTimer.textContent = `${min}:${sec}`;
+
+    //decrese 1s
+    time--;
+    //when we reach 0 sec stop timer and log out the user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started`;
+      containerApp.style.opacity = 0;
+    }
+  }, 1000);
+};
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
 
 //FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -258,6 +281,7 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
+    startLogoutTimer();
     // Update UI
     updateUI(currentAccount);
   }
@@ -601,3 +625,5 @@ setInterval(function () {
   const now3 = new Date();
   console.log(now3);
 }, 1000); //after each second we get the current time in the console
+
+//IMPLEMENTING A COUNTDOWN TIMER USING SETINTERVAL TIMER
