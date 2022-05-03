@@ -539,7 +539,8 @@ console.log(new Date(2037, 10, 19, 15, 23, 5)); //Thu Nov 19 2337 15:23:05 GMT+0
 //also autocorrect to the next date the dates if we put for nov 31 but we know november has just 30 days
 console.log(new Date(2037, 10, 31)); //Tue Dec 01 2037 00:00:00 GMT+0000 (Greenwich Mean Time)
 
-//we can pass the amount of milliseconds past since the beginning of the unit time, can be useful
+//we can pass the amount of milliseconds past since the beginning of the unix time, can be useful
+//January 1st, 1970 at 00:00:00 UTC is referred to as the Unix epoch. Early Unix engineers picked that date arbitrarily because they needed to set a uniform date for the start of time, and New Year's Day, 1970, seemed most convenient.
 console.log(new Date(0)); //Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)
 
 //3 days after this above, this is how we convert from days to milliseconds
